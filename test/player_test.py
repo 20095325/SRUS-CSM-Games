@@ -1,14 +1,14 @@
 import unittest
-import player
+from player import Player
 
 
 class PlayerTest(unittest.TestCase):
 
     def test_player_str(self):
-        sut = player.Player('123', 'John')
+        sut = Player('123', 'John')
         self.assertEqual(str(sut), 'Player: 123, John')
 
     def test_player_name_and_uid(self):
-        sut = player.Player('123', 'John')
-        self.assertEqual(sut._uid, '123')
-        self.assertEqual(sut._name, 'John')
+        sut = Player('123', 'John')
+        self.assertEqual(sut.uid, '123')
+        self.assertEqual(sut.name, 'John')
