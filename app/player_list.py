@@ -16,12 +16,23 @@ class PlayerList:
 
     def insert(self, value):
         if self.is_empty():
-            self._head = PlayerNode(value)
-            self._tail = self._head
+            self.empty_insert(value)
         else:
-            new_node = PlayerNode(value, self._head)
-            self._head.prev = new_node
-            self._head = new_node
+            current_node = PlayerNode(value, self._head)
+            self._head.prev = current_node
+            self._head = current_node
+
+    def append(self, value):
+        if self.is_empty():
+            self.empty_insert(value)
+        else:
+            current_node = PlayerNode(value, None, self._tail)
+            self._tail.next = current_node
+            self._tail = current_node
+
+    def empty_insert(self, value):
+        self._head = PlayerNode(value)
+        self._tail = self._head
 
     @property
     def head(self) -> PlayerNode | None:
