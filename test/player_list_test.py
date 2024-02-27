@@ -41,3 +41,15 @@ class PlayerListTest(unittest.TestCase):
         sut.append(Player('456', 'Marry'))
         self.assertEqual(str(sut.head), 'PlayerNode: Player: 456, Marry | None | None')
         self.assertEqual(str(sut.tail), 'PlayerNode: Player: 456, Marry | None | None')
+
+    def test_player_list_delete(self):
+        sut = PlayerList([Player('123', 'John'), Player('456', 'Marry')])
+        sut.delete()
+        self.assertEqual(str(sut.head), 'PlayerNode: Player: 456, Marry | None | None')
+        self.assertEqual(str(sut.tail), 'PlayerNode: Player: 456, Marry | None | None')
+
+    def test_player_list_pop(self):
+        sut = PlayerList([Player('123', 'John'), Player('456', 'Marry')])
+        sut.pop()
+        self.assertEqual(str(sut.head), 'PlayerNode: Player: 123, John | None | None')
+        self.assertEqual(str(sut.tail), 'PlayerNode: Player: 123, John | None | None')

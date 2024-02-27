@@ -9,7 +9,7 @@ class PlayerList:
         self._tail: PlayerNode | None = tail
         if values:
             for value in values:
-                self.insert(value)
+                self.append(value)
 
     def is_empty(self) -> bool:
         return self._head is None
@@ -34,6 +34,22 @@ class PlayerList:
         self._head = PlayerNode(value)
         self._tail = self._head
 
+    def delete(self):
+        if self.is_empty():
+            raise EmptyListException("The list is empty.")
+        removed_node = self._head.player
+        self._head = self._head.next
+        self._head.prev = None
+        return removed_node
+
+    def pop(self):
+        if self.is_empty():
+            raise EmptyListException("The list is empty.")
+        removed_node = self._tail.player
+        self._tail = self._tail.prev
+        self._tail.next = None
+        return removed_node
+
     @property
     def head(self) -> PlayerNode | None:
         return self._head
@@ -44,3 +60,6 @@ class PlayerList:
 
 
 
+class EmptyListException(Exception):
+    def __init__(self, message):
+        self.message = message
