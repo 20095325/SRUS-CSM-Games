@@ -70,12 +70,11 @@ class PlayerListTest(unittest.TestCase):
 
     def test_player_list_remove(self):
         sut = PlayerList([Player('123', 'John'),
-                          Player('873', 'Karen'),
-                          Player('456', 'Marry')])
-        removed = sut.remove('873')
-        self.assertEqual(str(removed), 'PlayerNode: Player: 873, Karen | Player: 456, Marry | Player: 123, John')
-        self.assertEqual(str(sut.head), 'PlayerNode: Player: 123, John | Player: 456, Marry | None')
-        self.assertEqual(str(sut.tail), 'PlayerNode: Player: 456, Marry | None | Player: 123, John')
+                          Player('873', 'Karen')])
+        removed = sut.remove('123')
+        self.assertEqual(str(removed), 'PlayerNode: Player: 123, John | Player: 873, Karen | None')
+        self.assertEqual(str(sut.head), 'PlayerNode: Player: 873, Karen | None | None')
+        self.assertEqual(str(sut.tail), 'PlayerNode: Player: 873, Karen | None | None')
 
     def test_player_list_remove_invalid_key(self):
         sut = PlayerList([Player('123', 'John'),

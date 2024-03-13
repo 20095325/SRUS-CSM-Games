@@ -12,3 +12,7 @@ class PlayerTest(unittest.TestCase):
         sut = Player('123', 'John')
         self.assertEqual(sut.uid, '123')
         self.assertEqual(sut.name, 'John')
+
+    def test_player_hash(self):
+        player = Player('7656', 'John')
+        self.assertEqual(hash(player), Player.make_hash('7656'))
