@@ -36,3 +36,10 @@ class HashMapTest(unittest.TestCase):
         del sut['543']
         self.assertEqual(len(sut), 0)
 
+    def test_hash_map_display(self):
+        sut = PlayerHashTable()
+        sut['123'] = 'John'
+        sut['543'] = 'Marry'
+        sut['765'] = 'Karen'  # this collides with Marry
+        sut.display()
+

@@ -92,6 +92,13 @@ class PlayerListTest(unittest.TestCase):
             self.assertEqual(type(err.exception), LinkedListException)
             self.assertEqual(err.exception.args[0], "The list is empty.")
 
+    def test_player_list_search(self):
+        sut = PlayerList([Player('123', 'John'), Player('456', 'Marry')])
+        John = sut.search('123')
+        Marry = sut.search('456')
+        self.assertEqual(str(John), 'PlayerNode: Player: 123, John | Player: 456, Marry | None')
+        self.assertEqual(str(Marry), 'PlayerNode: Player: 456, Marry | None | Player: 123, John')
+
     def test_player_list_display(self):
         sut = PlayerList([Player('123', 'John'),
                           Player('873', 'Karen'),

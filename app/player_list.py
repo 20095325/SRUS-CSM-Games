@@ -21,6 +21,21 @@ class PlayerList:
             for value in values:
                 self.append(value)
 
+    def __len__(self):
+        """
+        used to count the amount of players in the list
+        Returns:
+             an int representing the amount of players
+        """
+        length = 0
+        if self.is_empty():
+            return length
+        current_node = self._head
+        while current_node:
+            current_node = current_node.next
+            length += 1
+        return length
+
     def is_empty(self) -> bool:
         """
         used to check if the list has no nodes in it
@@ -105,7 +120,7 @@ class PlayerList:
         current_node = self._head
         while current_node:
             if current_node.key == key:
-                if self.count() == 1:
+                if len(self) == 1:
                     self._head = None
                     self._tail = None
                     return current_node
@@ -139,22 +154,8 @@ class PlayerList:
         while current_node:
             if current_node.key == key:
                 return current_node
-        raise LinkedListException("Key does not exist.")
-
-    def count(self):
-        """
-        used to count the amount of players in the list
-        Returns:
-             an int representing the amount of players
-        """
-        length = 0
-        if self.is_empty():
-            return length
-        current_node = self._head
-        while current_node:
-            length += 1
             current_node = current_node.next
-        return length
+        raise LinkedListException("Key does not exist.")
 
     def display(self, forward: bool = True):
         """

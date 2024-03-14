@@ -74,7 +74,7 @@ class PlayerHashTable:
         """
         length: int = 0
         for x in self.hash_map:
-            length += PlayerList.count(x)
+            length += len(x)
         return length
 
     def __delitem__(self, key):
@@ -90,3 +90,13 @@ class PlayerHashTable:
             player_list.remove(key)
         except LinkedListException as e:
             raise KeyError(str(e))
+
+    def display(self):
+        """
+        Prints all players separated by the hash map index for non-empty lists
+        """
+        for index, player_list in enumerate(self.hash_map):
+            if len(player_list) > 0:
+                print('Player list ' + str(index) + ':')
+                player_list.display()
+                print("\n")
