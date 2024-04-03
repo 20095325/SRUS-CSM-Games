@@ -7,15 +7,17 @@ class Player:
     """
     player class used to create a player
     """
-    def __init__(self, unique_id: str = None, player_name: str = None) -> None:
+    def __init__(self, unique_id: str = None, player_name: str = None, score: int = None) -> None:
         """
         Initialise a player
         Args:
             unique_id: Used to identify the player.
             player_name: The name of the player.
+            score: The score of the player.
         """
-        self._uid: str | None = unique_id
-        self._name: str | None = player_name
+        self._uid = unique_id
+        self._name = player_name
+        self._score = score
 
     def __str__(self) -> str:
         """
@@ -33,7 +35,57 @@ class Player:
         Returns:
             A boolean
         """
-        return self.uid == other.uid
+        return self.score == other.score
+
+    def __ge__(self, other) -> bool:
+        """
+        The greater than or equals dunder method
+        Args:
+            other: this is the other player that this player being compared to
+        Returns:
+            A boolean
+        """
+        return self.score >= other.score
+
+    def __gt__(self, other) -> bool:
+        """
+        The greater than dunder method
+        Args:
+            other: this is the other player that this player being compared to
+        Returns:
+            A boolean
+        """
+        return self.score > other.score
+
+    def __le__(self, other) -> bool:
+        """
+        The less than or equals dunder method
+        Args:
+            other: this is the other player that this player being compared to
+        Returns:
+            A boolean
+        """
+        return self.score <= other.score
+
+    def __lt__(self, other) -> bool:
+        """
+        The less than dunder method
+        Args:
+            other: this is the other player that this player being compared to
+        Returns:
+            A boolean
+        """
+        return self.score < other.score
+
+    @staticmethod
+    def quicksort(player_list: list) -> list:
+        if len(player_list) <= 1:
+            return player_list
+        pivot = player_list[0]
+        left = [i for i in player_list[1:] if i > pivot]
+        right = [i for i in player_list[1:] if i <= pivot]
+        return Player.quicksort(left) + [pivot] + Player.quicksort(right)
+
 
     @property
     def uid(self) -> str:
@@ -52,6 +104,15 @@ class Player:
              the name of the current player
         """
         return self._name
+
+    @property
+    def score(self) -> int | None:
+        """
+        the player score getter
+        Returns:
+             the score of the current player
+        """
+        return self._score
 
     def __hash__(self) -> int:
         """
