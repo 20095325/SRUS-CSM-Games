@@ -4,13 +4,11 @@ from player import Player
 
 class PlayerBNode:
 
-    def __init__(self, player: Player | None = None,
-                 left: PlayerBNode | None = None,
-                 right: PlayerBNode | None = None):
+    def __init__(self, player: Player | None = None):
 
         self._player = player
-        self._left = left
-        self._right = right
+        self._left = None
+        self._right = None
 
     @property
     def player(self) -> Player | None:

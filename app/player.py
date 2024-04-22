@@ -93,7 +93,6 @@ class Player:
         right = [i for i in player_list[1:] if i <= pivot]
         return Player.quicksort(left) + [pivot] + Player.quicksort(right)
 
-
     @property
     def uid(self) -> str:
         """
