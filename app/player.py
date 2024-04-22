@@ -79,6 +79,13 @@ class Player:
 
     @staticmethod
     def quicksort(player_list: list) -> list:
+        """
+        The quick sort static method used to sort a list of players by the player score.
+        Args:
+            player_list: the list of player objects
+        Returns:
+            the list of players sorted by the player score
+        """
         if len(player_list) <= 1:
             return player_list
         pivot = player_list[0]
