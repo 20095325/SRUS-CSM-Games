@@ -25,7 +25,7 @@ class Player:
         Returns:
             A formatted string that is human-readable
         """
-        return f'Player: {self._uid}, {self._name}'
+        return f'Player: {self._uid}, {self._name}, {self._score}'
 
     def __eq__(self, other) -> bool:
         """
